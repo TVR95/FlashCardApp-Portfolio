@@ -1,0 +1,17 @@
+.header-class {
+    -fx-background-color: #f2f4f7;
+}
+
+.text-area {
+    -fx-font-size: 32px;
+}
+
+.text-area:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-inner-border: transparent;
+    -fx-body-color: transparent;
+
+    -fx-background-color: -fx-faint-focus-color, -fx-focus-color, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: -1.4, 0, 1, 2;
+}

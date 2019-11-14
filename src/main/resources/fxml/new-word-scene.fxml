@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="mainPane"
+      stylesheets="@../css/new-word-css.css"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="Program.NewWordController"
+      prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <Label text="Word:"/>
+        <TextArea fx:id="wordToLearn"
+        onKeyPressed="#handleKeyPressedWordArea"/>
+        <Label text="Translation:"/>
+        <TextArea fx:id="translation"
+        onKeyPressed="#handleKeyPressedTranslationArea"/>
+        <Label text="Note:"/>
+        <TextArea fx:id="note"
+        onKeyPressed="#handleKeyPressedNoteArea"/>
+        <HBox>
+            <Button fx:id="addButton" text="Add word" onAction="#handleAddWord"/>
+            <Button fx:id="doneButton" text="Done" onAction="#handleDoneButton"/>
+        </HBox>
+    </children>
+
+</VBox>

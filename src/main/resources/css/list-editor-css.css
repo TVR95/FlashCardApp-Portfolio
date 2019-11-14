@@ -1,0 +1,44 @@
+/*THIS WILL BE CSS FILE FOR list-editor-scene.fxml*/
+
+.header-class {
+    -fx-background-color: #f2f4f7;
+}
+
+.text-area {
+    -fx-font-size: 24px;
+}
+
+.text-area:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-inner-border: transparent;
+    -fx-body-color: transparent;
+
+    -fx-background-color: -fx-faint-focus-color, -fx-focus-color, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: -1.4, 0, 1, 2;
+}
+
+.progress-button {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-background-insets: 0, 1;
+    -fx-alignment: center;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-font-family: Arial;
+    -fx-effect: dropshadow(three-pass-box, black, 10, 0.0, 0, 2);
+}
+
+.progress-button:focused {
+    -fx-focus-color: #79f96d;
+    -fx-faint-focus-color: transparent;
+    -fx-inner-border: transparent;
+    -fx-body-color: transparent;
+
+    -fx-background-color: -fx-faint-focus-color, -fx-focus-color, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: -1.4, 0, 1, 2;
+}
+
+.list-views {
+
+}

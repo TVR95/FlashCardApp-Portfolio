@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="mainBorderPane"
+            stylesheets="@../css/list-editor-css.css"
+            styleClass="header-class"
+            prefHeight="600.0"
+            prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Program.ListEditorController">
+    <top>
+        <VBox>
+            <MenuBar>
+                <Menu text="File">
+                    <items>
+                        <MenuItem text="Open" onAction="#openFile" accelerator="Shortcut + O"/>
+                        <MenuItem text="Save" onAction="#saveFile" accelerator="Shortcut + S"/>
+                        <MenuItem text="Save as" onAction="#saveFileAs" accelerator="Shift + Shortcut + S"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="Import words" onAction="#importWords"/>
+                    </items>
+                </Menu>
+                <Menu text="Edit">
+                    <items>
+                        <MenuItem text="Undo" accelerator="Shortcut + Z"/>
+                        <MenuItem text="Redo" accelerator="Shift + Shortcut + Z"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="Add new word"
+                                  onAction="#handleAddWord"/>
+                        <MenuItem text="Reset word progress"
+                                  onAction="#handleResetProgress"/>
+                        <MenuItem text="Delete word"
+                                  onAction="#handleDeleteWord"/>
+                        <MenuItem text="View list"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="Reset progress"
+                                  onAction="#handleResetEntireProgress"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="Delete repeated positions"/>
+                    </items>
+                </Menu>
+                <Menu text="Help">
+                    <items>
+                        <MenuItem text="Program guide"/>
+                    </items>
+                </Menu>
+            </MenuBar>
+            <ToolBar>
+                <HBox fx:id="toolBarMenu">
+                    <Button fx:id="addWordToolbar" onAction="#handleAddWord">
+                        <tooltip>
+                            <Tooltip text="Add new word"/>
+                        </tooltip>
+                        <graphic>
+                            <ImageView>
+                                <Image url="@../icons/add_new.png"/>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                </HBox>
+            </ToolBar>
+        </VBox>
+    </top>
+    <left>
+        <ListView fx:id="wordListView"
+                  styleClass="list-views"
+                  prefWidth="300"/>
+    </left>
+    <right>
+        <FlowPane fx:id="rightFlowPane"
+                  hgap="8"
+                  vgap="8"
+                  prefWrapLength="300">
+            <BorderPane.margin>
+                <Insets left="8" right="8" top="8" bottom="8"/>
+            </BorderPane.margin>
+            <children>
+                <Button fx:id="addWordButton"
+                        onAction="#handleAddWord"
+                        text="Add word"
+                        prefWidth="300"
+                        contentDisplay="RIGHT">
+                    <graphic>
+                        <ImageView>
+                            <Image url="@../icons/add_new.png"/>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="resetWordButton"
+                        onAction="#handleResetProgress"
+                        text="Reset progress"
+                        prefWidth="300"
+                        contentDisplay="RIGHT">
+                    <graphic>
+                        <ImageView>
+                            <Image url="@../icons/add_new.png"/>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="resetEntireProgressButton"
+                        onAction="#handleResetEntireProgress"
+                        text="Reset entire progress"
+                        prefWidth="300"
+                        contentDisplay="RIGHT">
+                    <graphic>
+                        <ImageView>
+                            <Image url="@../icons/add_new.png"/>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <ToggleButton fx:id="editModeToggleButton"
+                              onAction="#handleChangeEditMode"
+                              text="Edit Mode"
+                              prefWidth="300"
+                              prefHeight="150"
+                              contentDisplay="RIGHT"/>
+                <Button fx:id="saveChange"
+                        onAction="#handleSaveChange"
+                        text="Save changes"
+                        visible="false">
+                    <graphic>
+                        <ImageView>
+                            <Image url="@../icons/add_new.png"/>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+        </FlowPane>
+    </right>
+    <center>
+        <VBox fx:id="textAreaVBox"
+              spacing="4">
+            <BorderPane.margin>
+                <Insets left="8" right="8" top="0" bottom="0"/>
+            </BorderPane.margin>
+
+            <children>
+                <Label fx:id="wordLabel"
+                       text="Word"/>
+                <TextArea fx:id="wordTextArea"
+                          styleClass="text-area"
+                          editable="false"
+                          wrapText="true"
+                          VBox.vgrow="ALWAYS"/>
+                <Label fx:id="translationLabel"
+                       text="Translation"/>
+                <TextArea fx:id="translationTextArea"
+                          styleClass="text-area"
+                          editable="false"
+                          wrapText="true"
+                          VBox.vgrow="ALWAYS"/>
+                <Label fx:id="noteLabel"
+                       text="Note"/>
+                <TextArea fx:id="noteTextArea"
+                          styleClass="text-area"
+                          editable="false"
+                          wrapText="true"
+                          VBox.vgrow="ALWAYS"/>
+            </children>
+        </VBox>
+    </center>
+    <bottom>
+        <HBox fx:id="bottomHBox"
+              alignment="CENTER_RIGHT">
+            <BorderPane.margin>
+                <Insets left="8" right="8" top="8" bottom="8"/>
+            </BorderPane.margin>
+            <children>
+                <Button fx:id="doneButton"
+                        onAction="#handleDoneButton"
+                        text="Done"
+                        prefWidth="300"
+                        prefHeight="150"/>
+            </children>
+        </HBox>
+    </bottom>
+</BorderPane>

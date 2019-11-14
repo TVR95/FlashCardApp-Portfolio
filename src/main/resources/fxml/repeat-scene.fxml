@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:id="mainBorderPane"
+            stylesheets="@../css/repeat-css.css"
+            fx:controller="Program.RepeatController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <top>
+        <VBox>
+            <MenuBar>
+                <Menu text="File">
+                    <items>
+                        <MenuItem text="New" onAction="#handleNewFile"/>
+                        <MenuItem text="Open" onAction="#handleOpenFile" accelerator="Shortcut + O"/>
+                        <MenuItem text="Save" onAction="#handleSaveFile" accelerator="Shortcut + S"/>
+                        <MenuItem text="Save as" onAction="#handleSaveFileAs" accelerator="Shift + Shortcut + S"/>
+                        <MenuItem text="Save in cloud"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="Settings"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="Import words" onAction="#handleImportWords"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="Exit" onAction="#handleExit" accelerator="Shortcut + Q"/>
+                    </items>
+                </Menu>
+                <Menu text="Edit">
+                    <items>
+                        <MenuItem text="List Editor" onAction="#handleListEditor"/>
+                    </items>
+                </Menu>
+                <Menu text="View">
+                    <items>
+                        <RadioMenuItem fx:id="noteViewMenu"
+                                       text="Note"
+                                       selected="true"/>
+                    </items>
+                </Menu>
+                <Menu text="Help">
+                    <items>
+                        <MenuItem text="Program guide"/>
+                    </items>
+                </Menu>
+            </MenuBar>
+
+            <ToolBar>
+                <HBox fx:id="toolBarMenu">
+                    <Button fx:id="newFileToolbar" onAction="#handleNewFile">
+                        <tooltip>
+                            <Tooltip text="New File"/>
+                        </tooltip>
+                        <graphic>
+                            <ImageView>
+                                <Image url="@../icons/add_new.png"/>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button fx:id="saveFileToolbar" onAction="#handleSaveFile">
+                        <tooltip>
+                            <Tooltip text="Save File"/>
+                        </tooltip>
+                        <graphic>
+                            <ImageView>
+                                <Image url="@../icons/add_new.png"/>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button fx:id="openFileToolbar" onAction="#handleOpenFile">
+                        <tooltip>
+                            <Tooltip text="Open File"/>
+                        </tooltip>
+                        <graphic>
+                            <ImageView>
+                                <Image url="@../icons/add_new.png"/>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Button fx:id="listEditorFileToolbar" onAction="#handleListEditor">
+                        <tooltip>
+                            <Tooltip text="List Editor"/>
+                        </tooltip>
+                        <graphic>
+                            <ImageView>
+                                <Image url="@../icons/add_new.png"/>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                </HBox>
+            </ToolBar>
+
+            <Label fx:id="wordRepeatNumberLabel"
+                   text="Words: ">
+                <padding><Insets left="8" right="8" top="8" bottom="8"/></padding>
+            </Label>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox fx:id="textAreaVBox"
+              spacing="8">
+            <BorderPane.margin>
+                <Insets left="8" right="8" top="0" bottom="0"/>
+            </BorderPane.margin>
+
+            <children>
+                <TextArea fx:id="askTextArea"
+                          styleClass="text-area"
+                          editable="false"
+                          VBox.vgrow="ALWAYS"/>
+                <TextArea fx:id="answerTextArea"
+                          styleClass="text-area"
+                          editable="false"
+                          onKeyPressed="#handleKeyPressAnswerArea"
+                          wrapText="true"
+                          VBox.vgrow="ALWAYS"/>
+            </children>
+        </VBox>
+    </center>
+
+    <bottom>
+        <!--This will show after the answer text appeared. It will be false by default-->
+        <HBox fx:id="buttonsHBox"
+              alignment="BOTTOM_CENTER"
+              spacing="16"
+              visible="false">
+            <BorderPane.margin>
+                <Insets top="8" bottom="8"/>
+            </BorderPane.margin>
+            <children>
+                <Button fx:id="badButton"
+                        styleClass="progress-button"
+                        onAction="#handleBadButton"
+                        text="Bad"
+                        prefHeight="60"
+                        prefWidth="120"/>
+                <Button fx:id="goodButton"
+                        styleClass="progress-button"
+                        onAction="#handleGoodButton"
+                        text="Good"
+                        prefHeight="60"
+                        prefWidth="120"/>
+                <Button fx:id="veryGoodButton"
+                        styleClass="progress-button"
+                        onAction="#handleVeryGoodButton"
+                        text="Very Good"
+                        prefHeight="60"
+                        prefWidth="120"/>
+            </children>
+        </HBox>
+    </bottom>
+
+</BorderPane>
